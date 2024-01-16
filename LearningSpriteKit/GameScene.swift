@@ -11,10 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var gameModel: GameModel?
-    var enemySize = CGSize(width: 100, height: 100)
-    var enemyPosition = CGPoint(x: 200, y: 200)
     var enemyNode = SKSpriteNode(imageNamed: "enemy")
-    
     
     override func didMove(to view: SKView) {
         start()
@@ -26,15 +23,14 @@ class GameScene: SKScene {
     }
     
     func addEnemy(){
-        enemyNode.size = enemySize
-        enemyNode.position = enemyPosition
+        enemyNode.size = CGSize(width: 100, height: 100)
+        enemyNode.position = CGPoint(x: 200, y: 200)
         addChild(enemyNode)
     }
     
     func shakeSprite(layer:SKSpriteNode, duration:Float) {
         
         let position = layer.position
-        
         let amplitudeX:Float = 10
         let amplitudeY:Float = 6
         let numberOfShakes = duration / 0.04
@@ -47,9 +43,7 @@ class GameScene: SKScene {
             actionsArray.append(shakeAction)
             actionsArray.append(shakeAction.reversed())
         }
-        
         actionsArray.append(SKAction.move(to: position, duration: 0.0))
-        
         let actionSeq = SKAction.sequence(actionsArray)
         layer.run(actionSeq)
     }
