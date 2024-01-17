@@ -17,7 +17,6 @@ class GameScene: SKScene {
     var movableNode: SKNode?
     
     private var nodeValue = 1
-    
     private var nodeValueLabel = SKLabelNode(fontNamed:"Times New Roman")
     
     override func didMove(to view: SKView) {
@@ -26,8 +25,8 @@ class GameScene: SKScene {
     
     func start(){
         backgroundColor = .purple
-        addEnemy(enemyNode, initialPosition)
         addEnemy(oliviaRodrigo, CGPoint(x: 200, y: 500))
+        addEnemy(enemyNode, initialPosition)
         setNodeValue()
     }
     
@@ -43,8 +42,6 @@ class GameScene: SKScene {
         self.nodeValueLabel.position.x = initialPosition.x
         self.nodeValueLabel.position.y = initialPosition.y - 100
         self.addChild(self.nodeValueLabel)
-//        nodeValueLabel.position.x = enemyNode.position.x
-//        nodeValueLabel.position.y = enemyNode.position.y
     }
     
     func giveDamage(_ touches: Set<UITouch>){
@@ -52,7 +49,6 @@ class GameScene: SKScene {
             if enemyNode.contains(touch.location(in: self)){
                 if gameModel!.life > 0{
                     gameModel?.life -= 10
-//                    shakeSprite(layer: enemyNode, duration: 0.3)
                     if gameModel?.life == 0{
                         enemyNode.zRotation = .pi / 2
                     }
