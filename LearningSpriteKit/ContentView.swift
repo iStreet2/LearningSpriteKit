@@ -25,6 +25,12 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack{
                 Text("\(gameModel.life)")
+                Button(action: {
+                    scene.view?.isPaused = true
+                }
+                , label: {
+                    Text("Button")
+                })
             }
         }
     }
